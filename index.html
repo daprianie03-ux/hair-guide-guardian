@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HAIR GUIDE</title>
+<style>
+:root {
+  --site-primary: #E87524;
+  --site-secondary: #F8D9B8;
+  --site-background: #FFF8F0;
+  --site-on-primary: #FFFFFF;
+  --site-on-secondary: #663312;
+  --site-on-background: #38251A;
+  --site-font-body: Arial, Helvetica, sans-serif;
+  --site-font-heading: Arial, Helvetica, sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--site-font-body); background: var(--site-background); color: var(--site-on-background); }
+#app { min-height: 100vh; width: 100%; background-color: var(--site-background); border-radius: 0; overflow: hidden; }
+.topbar { display:flex; align-items:center; justify-content:space-between; padding:18px clamp(18px,5vw,64px); background:var(--site-primary); color:var(--site-on-primary); }
+.logo { font-weight:900; letter-spacing:2px; font-size:20px; }
+.logo span { display:block; font-size:10px; letter-spacing:3px; font-weight:600; margin-top:3px; }
+.top-tag { font-size:12px; font-weight:700; opacity:.95; }
+.hero { position:relative; padding: clamp(30px,6vw,64px) clamp(20px,7vw,90px) 38px; background:linear-gradient(115deg,#FFF1E2 0%,#FFE0C2 55%,#FFF8F0 100%); display:grid; grid-template-columns:1.05fr .95fr; align-items:center; gap:24px; }
+.hero:after { content:""; position:absolute; width:260px; height:260px; right:4%; top:8%; border-radius:50%; background:rgba(232,117,36,.10); filter:blur(2px); pointer-events:none; }
+.hero-art { position:relative; min-height:270px; display:flex; align-items:center; justify-content:center; isolation:isolate; }
+.hair-orbit { position:absolute; width:min(310px,85%); aspect-ratio:1; border-radius:50%; background:radial-gradient(circle at 35% 30%,#FFFDF9 0 15%,#F9C99E 58%,#F4A66E 100%); z-index:-2; }
+.hair-silhouette { width:68%; height:245px; border-radius:48% 48% 42% 42%; background:linear-gradient(105deg,#3A211B 0%,#75402B 28%,#241511 52%,#8A5034 72%,#2C1914 100%); transform:rotate(-8deg); box-shadow:inset 16px 0 22px rgba(255,220,180,.22),12px 18px 28px rgba(92,45,19,.2); clip-path:ellipse(47% 49% at 50% 50%); }
+.hair-silhouette:after { content:""; display:block; width:35%; height:90%; margin:5% auto; border-radius:50%; background:linear-gradient(90deg,rgba(255,220,180,.05),rgba(255,232,204,.45),rgba(255,220,180,.03)); filter:blur(8px); }
+.floating-bottle { position:absolute; right:9%; bottom:8%; width:64px; height:142px; border-radius:17px 17px 12px 12px; background:linear-gradient(90deg,#D66A1C,#FFB15F 45%,#C65313); border:3px solid rgba(255,255,255,.75); box-shadow:0 14px 25px rgba(109,53,21,.2); transform:rotate(8deg); }
+.floating-bottle:before { content:""; position:absolute; width:27px; height:19px; top:-20px; left:15px; border-radius:5px 5px 2px 2px; background:#713914; }
+.floating-bottle:after { content:"HAIR\A CARE"; white-space:pre; position:absolute; top:48px; left:0; right:0; text-align:center; color:#FFF9F2; font-size:9px; line-height:1.5; font-weight:900; letter-spacing:1px; }
+.eyebrow { display:inline-block; color:#A84E14; background:#FFE4CC; border:1px solid #F3C49D; padding:8px 13px; border-radius:99px; font-size:11px; font-weight:800; letter-spacing:1.2px; }
+h1 { font-family:var(--site-font-heading); font-size:calc(clamp(42px,8vw,76px) * var(--site-heading-scale)); line-height:.98; margin:20px 0 14px; letter-spacing:-2px; color:#74360F; }
+.hero p { max-width:560px; line-height:1.65; font-size:clamp(15px,2vw,18px); color:#68452F; margin:0; }
+.hero-note { margin-top:25px; display:flex; align-items:center; gap:10px; font-size:12px; color:#87502C; font-weight:700; }
+.spark { color:var(--site-primary); font-size:22px; }
+main { max-width:1120px; margin:0 auto; padding:34px clamp(18px,5vw,52px) 60px; }
+.section-head { display:flex; justify-content:space-between; align-items:end; gap:16px; margin-bottom:18px; }
+h2 { font-size:calc(24px * var(--site-heading-scale)); margin:0; color:#63310F; }
+.section-head p { margin:5px 0 0; color:#846B5B; font-size:13px; }
+.brand-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+.brand-card { background:light-dark(#FFFFFF,#25211E); border:1px solid #F0D5BE; border-radius:calc(22px * var(--site-radius-scale)); padding:22px; box-shadow:0 8px 24px rgba(111,61,25,.07); display:flex; flex-direction:column; min-height:220px; }
+.brand-mark { width:52px; height:52px; border-radius:16px; display:grid; place-items:center; background:#FFF0E2; color:#C85B16; font-weight:900; font-size:18px; margin-bottom:17px; }
+.brand-card h3 { margin:0 0 8px; font-size:20px; color:light-dark(#4B2C1A,#FFF1E5); }
+.brand-card p { margin:0 0 18px; line-height:1.5; font-size:13px; color:light-dark(#806957,#D6C1B1); }
+.btn { border:0; border-radius:12px; padding:13px 16px; font-weight:800; font-size:13px; cursor:pointer; background:var(--site-primary); color:var(--site-on-primary); text-align:center; }
+.btn.secondary { background:#FFF0E2; color:#93430F; border:1px solid #F2C7A5; }
+.brand-card .btn { margin-top:auto; }
+.needs { margin-top:42px; background:light-dark(#FFFFFF,#25211E); border:1px solid #F0D5BE; border-radius:calc(22px * var(--site-radius-scale)); padding:24px; }
+.needs-head { margin-bottom:17px; }
+.needs-head p { color:light-dark(#806957,#D6C1B1); font-size:13px; margin:7px 0 0; }
+.need-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.need { padding:15px 12px; border:1px solid #F1D9C5; background:light-dark(#FFFAF5,#302923); border-radius:14px; color:light-dark(#623717,#FFE6D2); cursor:pointer; text-align:left; font-weight:700; font-size:13px; min-height:70px; }
+.need:hover,.need:focus { outline:2px solid var(--site-primary); outline-offset:2px; }
+.result { display:none; margin-top:18px; padding:17px; background:#FFF0E2; border-radius:14px; color:#673514; line-height:1.55; font-size:14px; }
+.result strong { display:block; margin-bottom:5px; }
+.footer { background:#6D3515; color:#FFF4EA; text-align:center; padding:24px 18px; font-size:12px; line-height:1.6; }
+.footer strong { display:block; letter-spacing:1.5px; margin-bottom:5px; }
+.focus-card { display:grid; grid-template-columns:180px 1fr; gap:22px; align-items:center; background:#FFFFFF; border:1px solid #F0D5BE; border-radius:24px; padding:22px; box-shadow:0 12px 30px rgba(111,61,25,.08); }
+.focus-art { min-height:210px; border-radius:18px; background:linear-gradient(145deg,#FFE9D4,#F7B77E); display:grid; place-items:center; position:relative; overflow:hidden; }
+.focus-art:before { content:""; position:absolute; width:150px; height:180px; border-radius:50%; background:linear-gradient(100deg,#291711,#75432C,#21120F); transform:rotate(18deg); }
+.focus-art:after { content:"✦"; position:absolute; right:18px; top:14px; color:#FFF; font-size:28px; }
+.focus-copy p { color:#806957; line-height:1.6; font-size:14px; }
+.focus-label { color:#B45A1B; font-size:11px; font-weight:900; letter-spacing:1.5px; }
+.info-pills { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 18px; }
+.info-pills span { background:#FFF0E2; border:1px solid #F2D2B7; color:#81451E; padding:8px 10px; border-radius:99px; font-size:11px; font-weight:700; }
+.routine { margin-top:26px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.routine article { background:#FFF; border:1px solid #F0D5BE; border-radius:16px; padding:16px; }
+.routine b { display:block; color:#74360F; margin-bottom:6px; }
+.routine p { margin:0; color:#806957; font-size:12px; line-height:1.5; }
+.quiz { margin-top:28px; padding:24px; border-radius:22px; background:#FFF; border:1px solid #F0D5BE; box-shadow:0 8px 24px rgba(111,61,25,.06); }
+.quiz-intro { color:#806957; font-size:13px; line-height:1.6; margin:8px 0 18px; }
+.quiz-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.field label { display:block; font-size:12px; font-weight:800; color:#74360F; margin-bottom:7px; }
+.field select { width:100%; border:1px solid #E8CDB6; border-radius:12px; padding:13px; background:#FFFAF5; color:#57351F; font:inherit; font-size:13px; }
+.quiz-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:17px; }
+.recommendation { display:none; margin-top:18px; padding:20px; background:#FFF0E2; border:1px solid #F2C7A5; border-radius:16px; color:#673514; line-height:1.6; }
+.recommendation h3 { margin:0 0 8px; color:#74360F; }
+.recommendation ul { padding-left:20px; margin:8px 0; }
+.small-note { color:#806957; font-size:11px; margin-top:10px; }
+.btn:focus,select:focus { outline:2px solid #B95B1B; outline-offset:2px; }
+@media(max-width:620px) { .quiz-grid {grid-template-columns:1fr;} }
+@media(max-width:700px) { .hero {grid-template-columns:1fr;} .hero-art {min-height:210px; grid-row:1;} .hair-silhouette {height:190px;} .focus-card {grid-template-columns:1fr;} .focus-art {min-height:170px;} .routine {grid-template-columns:1fr;} }
+@media(max-width:620px) { .brand-grid {grid-template-columns:1fr;} .need-grid {grid-template-columns:repeat(2,minmax(0,1fr));} .section-head {display:block;} .top-tag {font-size:10px;} }
+@media(prefers-color-scheme:dark) { .hero {background:linear-gradient(130deg,#35251B 0%,#4A2B1B 55%,#201B17 100%);} .hero h1 {color:#FFE0C2;} .hero p,.hero-note {color:#E6C8AF;} .eyebrow {background:#56341F;color:#FFD4AE;border-color:#80512D;} h2 {color:#FFE1C8;} .section-head p {color:#D0B9A5;} }
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="logo">HAIR GUIDE<span>GUARDIAN • DIGITAL PRODUCT EDUCATION</span></div>
+    <div class="top-tag">SCAN • LEARN • CHOOSE</div>
+  </header>
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">YOUR PERSONAL HAIRCARE GUIDE</span>
+      <h1>Rambut sehat<br>dimulai dari sini.</h1>
+      <p>Kenali kebutuhan rambutmu, pelajari jenis perawatan, dan temukan cara memilih produk yang tepat. Panduan ini membantumu memahami haircare sebelum menentukan pilihan.</p>
+      <div class="hero-note"><span class="spark">✦</span> Kenali kebutuhan • Pelajari produk • Pilih dengan yakin</div>
+    </div>
+    <div class="hero-art" aria-label="Ilustrasi rambut sehat dan produk haircare"><div class="hair-orbit"></div><div class="hair-silhouette"></div><div class="floating-bottle"></div></div>
+  </section>
+  <main>
+    <div class="section-head">
+      <div><h2>Kenali kebutuhan rambut</h2><p>Setiap rambut memiliki kebutuhan yang berbeda. Mulailah dari hal yang ingin kamu rawat.</p></div>
+    </div>
+    <section class="needs" style="margin-top:0">
+      <div class="need-grid">
+        <button class="need" onclick="showNeed('Rambut kering','needResult')">💧 Rambut kering</button>
+        <button class="need" onclick="showNeed('Rambut rusak','needResult')">✨ Rambut rusak</button>
+        <button class="need" onclick="showNeed('Rambut kusut','needResult')">〰️ Rambut kusut</button>
+        <button class="need" onclick="showNeed('Rambut mengembang','needResult')">☁️ Rambut mengembang</button>
+        <button class="need" onclick="showNeed('Kulit kepala berminyak','needResult')">🌿 Kulit kepala berminyak</button>
+        <button class="need" onclick="showNeed('Rambut diwarnai','needResult')">🎨 Rambut diwarnai</button>
+      </div>
+      <div id="needResult" class="result" aria-live="polite"></div>
+    </section>
+    <section class="routine">
+      <article><b>01 · Kenali kebutuhan</b><p>Perhatikan kondisi rambut yang ingin kamu rawat, seperti kering, rusak, kusut, atau mengembang.</p></article>
+      <article><b>02 · Bandingkan varian</b><p>Periksa nama varian, fungsi, kandungan, dan petunjuk pada kemasan setiap produk.</p></article>
+      <article><b>03 · Pilih perawatan</b><p>Pilih jenis produk dan rangkaian yang sesuai dengan kebutuhan serta kebiasaan perawatan rambutmu.</p></article>
+    </section>
+    <section class="quiz" id="hair-check">
+      <span class="eyebrow">HAIRCARE MATCH</span>
+      <h2 style="margin-top:14px">Temukan perawatan yang sesuai</h2>
+      <p class="quiz-intro">Jawab tiga pertanyaan singkat untuk mendapatkan arahan perawatan berdasarkan kebutuhan rambutmu.</p>
+      <div class="quiz-grid">
+        <div class="field"><label for="hairConcern">Apa yang paling ingin kamu rawat?</label><select id="hairConcern"><option value="kering">Rambut kering</option><option value="rusak">Rambut rusak</option><option value="kusut">Rambut kusut</option><option value="mengembang">Rambut mengembang</option><option value="berwarna">Rambut diwarnai</option><option value="rontok">Rambut mudah rontok/patah</option></select></div>
+        <div class="field"><label for="scalpType">Bagaimana kondisi kulit kepalamu?</label><select id="scalpType"><option value="normal">Normal</option><option value="berminyak">Cenderung berminyak</option><option value="kering">Cenderung kering</option><option value="sensitif">Sensitif / mudah tidak nyaman</option><option value="tidak-yakin">Belum yakin</option></select></div>
+        <div class="field"><label for="hairTexture">Bagaimana tekstur rambutmu?</label><select id="hairTexture"><option value="lurus">Lurus</option><option value="bergelombang">Bergelombang</option><option value="keriting">Keriting</option><option value="sangat-keriting">Sangat keriting</option><option value="tidak-yakin">Belum yakin</option></select></div>
+        <div class="field"><label for="hairRoutine">Seberapa sering menggunakan alat styling panas?</label><select id="hairRoutine"><option value="jarang">Jarang / tidak pernah</option><option value="kadang">Kadang-kadang</option><option value="sering">Sering</option></select></div>
+      </div>
+      <div class="quiz-actions"><button class="btn" type="button" onclick="getRecommendation()">Lihat rekomendasi perawatan</button><button class="btn secondary" type="button" onclick="resetRecommendation()">Ulangi</button></div>
+      <div id="recommendationResult" class="recommendation" aria-live="polite"></div>
+      <p class="small-note">Panduan ini bersifat edukasi umum, bukan diagnosis kulit kepala atau rambut. Periksa informasi dan petunjuk pada kemasan produk.</p>
+    </section>
+    <section class="needs">
+      <div class="needs-head"><h2>Pahami jenis perawatan</h2><p>Kenali fungsi setiap jenis produk dalam rangkaian haircare.</p></div>
+      <div class="need-grid">
+        <button class="need" onclick="showNeed('Shampoo','typeResult')">🫧 Shampoo</button>
+        <button class="need" onclick="showNeed('Conditioner','typeResult')">💦 Conditioner</button>
+        <button class="need" onclick="showNeed('Hair mask','typeResult')">🥣 Hair mask</button>
+        <button class="need" onclick="showNeed('Hair serum atau oil','typeResult')">✨ Hair serum / oil</button>
+        <button class="need" onclick="showNeed('Hair treatment','typeResult')">🌸 Hair treatment</button>
+        <button class="need" onclick="showNeed('Heat protection','typeResult')">♨️ Heat protection</button>
+      </div>
+      <div id="typeResult" class="result" aria-live="polite"></div>
+    </section>
+  </main>
+  <footer class="footer"><strong>HAIR GUIDE • GUARDIAN LIPPO MALL KEMANG</strong>Panduan edukasi untuk mengenali kebutuhan rambut dan memahami pilihan perawatan yang tersedia. Selalu periksa petunjuk dan informasi pada kemasan produk.</footer>
+</div>
+<script>
+const hairInfo = {
+  'Rambut kering': 'Pilih perawatan yang ditujukan untuk membantu menjaga kelembapan rambut. Perhatikan petunjuk pemakaian conditioner atau perawatan intensif pada kemasan.',
+  'Rambut rusak': 'Pertimbangkan rangkaian perawatan untuk rambut rusak. Cek klaim produk, cara penggunaan, dan apakah produk ditujukan untuk kerusakan akibat proses kimia atau panas.',
+  'Rambut kusut': 'Conditioner atau produk perawatan tanpa bilas dapat membantu mempermudah rambut disisir. Ikuti petunjuk pemakaian dan hindari menggosok rambut terlalu kuat.',
+  'Rambut mengembang': 'Cari produk yang ditujukan untuk membantu menghaluskan dan mengelola rambut mengembang. Sesuaikan pilihan dengan tekstur serta kondisi rambut.',
+  'Kulit kepala berminyak': 'Fokuskan pemilihan shampoo pada kebutuhan kulit kepala. Gunakan sesuai petunjuk dan sesuaikan frekuensi keramas dengan kondisi rambutmu.',
+  'Rambut diwarnai': 'Pilih produk yang pada kemasannya menyebutkan kesesuaian untuk rambut diwarnai. Perhatikan petunjuk perawatan agar warna rambut tetap terawat.',
+  'Shampoo': 'Shampoo digunakan untuk membersihkan kulit kepala dan rambut. Pilih berdasarkan kebutuhan kulit kepala serta petunjuk pada kemasan.',
+  'Conditioner': 'Conditioner umumnya digunakan setelah shampoo untuk membantu rambut terasa lebih lembut dan mudah disisir. Perhatikan area dan cara aplikasi pada kemasan.',
+  'Hair mask': 'Hair mask merupakan perawatan intensif yang digunakan sesuai frekuensi dan durasi pada petunjuk produk.',
+  'Hair serum atau oil': 'Serum atau oil digunakan sebagai perawatan batang rambut sesuai fungsi dan petunjuk masing-masing produk. Perhatikan jumlah pemakaian agar tidak berlebihan.',
+  'Hair treatment': 'Hair treatment memiliki fungsi dan cara penggunaan yang beragam. Periksa tujuan perawatan, durasi, dan frekuensi pemakaian pada kemasan.',
+  'Heat protection': 'Heat protection dirancang untuk digunakan sebelum styling dengan alat panas. Ikuti petunjuk aplikasi dan tetap gunakan suhu alat yang sesuai.'
+};
+function showNeed(need, targetId) {
+  const box = document.getElementById(targetId);
+  box.style.display = 'block';
+  box.innerHTML = '<strong>' + need + '</strong>' + (hairInfo[need] || 'Periksa fungsi dan petunjuk penggunaan pada kemasan produk sebelum memilih.');
+  box.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function getRecommendation() {
+  const concern = document.getElementById('hairConcern').value;
+  const scalp = document.getElementById('scalpType').value;
+  const styling = document.getElementById('hairRoutine').value;
+  const recommendations = {
+    kering: {title:'Fokus pada kelembapan rambut',items:['Pertimbangkan shampoo sesuai kondisi kulit kepala.','Tambahkan conditioner setelah keramas.','Pertimbangkan hair mask sesuai petunjuk pemakaian.']},
+    rusak: {title:'Fokus pada perawatan rambut rusak',items:['Cari rangkaian yang mencantumkan fungsi perawatan rambut rusak.','Pertimbangkan conditioner atau hair mask.','Batasi proses styling panas bila memungkinkan.']},
+    kusut: {title:'Fokus pada kelembutan dan kemudahan menyisir',items:['Gunakan conditioner sesuai petunjuk.','Pertimbangkan leave-in treatment atau serum bila sesuai kebutuhan.','Sisir rambut perlahan dari bagian ujung.']},
+    mengembang: {title:'Fokus pada pengelolaan rambut mengembang',items:['Cari produk yang ditujukan untuk membantu menghaluskan rambut.','Pertimbangkan conditioner dan serum atau oil sesuai petunjuk.','Sesuaikan pilihan dengan tekstur rambut.']},
+    berwarna: {title:'Fokus pada perawatan rambut diwarnai',items:['Pilih produk yang secara jelas menyebutkan kesesuaian untuk rambut diwarnai.','Pertimbangkan conditioner atau hair mask.','Ikuti petunjuk perawatan pada kemasan.']},
+    rontok: {title:'Kenali dulu apakah rambut mudah patah atau rontok dari akar',items:['Pilih perawatan lembut sesuai kondisi kulit kepala dan batang rambut.','Hindari menarik atau menyisir rambut terlalu kuat.','Jika kerontokan berlebihan atau menetap, pertimbangkan konsultasi tenaga kesehatan.']}
+  };
+  const data = recommendations[concern];
+  const scalpText = scalp === 'berminyak' ? 'Karena kulit kepala cenderung berminyak, perhatikan kecocokan shampoo untuk kebutuhan kulit kepala.' : scalp === 'kering' ? 'Karena kulit kepala cenderung kering, pilih produk pembersih yang terasa nyaman dan ikuti petunjuk pemakaian.' : scalp === 'sensitif' ? 'Karena kulit kepala sensitif, periksa daftar bahan dan hentikan pemakaian bila muncul iritasi.' : 'Sesuaikan shampoo dengan kondisi kulit kepala dan respons setelah pemakaian.';
+  const heatText = styling === 'sering' ? 'Karena kamu sering menggunakan alat panas, pertimbangkan heat protection sebelum styling sesuai petunjuk produk.' : styling === 'kadang' ? 'Saat menggunakan alat panas, pertimbangkan heat protection sesuai petunjuk produk.' : 'Tetap gunakan suhu alat styling yang wajar bila sewaktu-waktu menggunakannya.';
+  const result = document.getElementById('recommendationResult');
+  result.innerHTML = '<h3>' + data.title + '</h3><ul>' + data.items.map(item => '<li>' + item + '</li>').join('') + '<li>' + scalpText + '</li><li>' + heatText + '</li></ul><strong>Langkah berikutnya di toko:</strong> cocokkan jenis perawatan di atas dengan varian yang tersedia pada rak Haircare Guardian Lippo Mall Kemang. Tanyakan bantuan Beauty Advisor atau staf toko bila perlu.';
+  result.style.display = 'block';
+  result.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function resetRecommendation() {
+  document.getElementById('hairConcern').selectedIndex = 0;
+  document.getElementById('scalpType').selectedIndex = 0;
+  document.getElementById('hairTexture').selectedIndex = 0;
+  document.getElementById('hairRoutine').selectedIndex = 0;
+  document.getElementById('recommendationResult').style.display = 'none';
+}
+</script>
+</body>
+</html>
